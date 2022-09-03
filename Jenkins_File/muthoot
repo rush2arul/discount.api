@@ -41,7 +41,9 @@ pipeline {
 
 	 dir('src')
 	        {       
-        	echo 'Deploy'  
+		sh '/home/arul/MUTHOOT/CUSTOM/DOCKER_COMPOSE/stopbyname.sh catalog.api'	
+		sh 'docker run -d --env-file env.discount.api  -p "8002:80"  --name discount.api  discount.api'
+        	echo 'Deploy completed '  
         	}
 
       	}
