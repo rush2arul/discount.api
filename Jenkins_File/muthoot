@@ -9,7 +9,7 @@ pipeline {
       steps {
 	 	dir('src'){       
 		script{ 
-			dockerImage=docker.build discount.api 
+			dockerImage=docker.build discount.api
        		     }
                           }
                    }
