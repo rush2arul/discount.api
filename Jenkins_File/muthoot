@@ -31,7 +31,8 @@ pipeline {
       steps {
 	 dir('src')
         	{       
-		sh 'docker build -t discount.api .'
+		script{ 
+		dockerImage=docker build -t discount.api .
         	}
 
       }
@@ -47,7 +48,7 @@ pipeline {
 		script{
 		docker.withRegistry('http://192.168.1.53:1414','nexus')
 		{
-			discount.api.push()
+			dockerImage.push()
 		}
 		}
         	}
