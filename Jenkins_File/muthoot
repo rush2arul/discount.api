@@ -45,7 +45,9 @@ pipeline {
 		sh '#docker run -d --env-file env.discount.api  -p "8002:80"  --name discount.api  discount.api'
         	echo 'Deploy completed '  
 		docker.withRegistry(http://192.168.1.53:1414,nexus)
-		discount.api.push();
+		{
+			discount.api.push();
+		}
         	}
 
       	}
