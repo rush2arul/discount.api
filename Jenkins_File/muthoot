@@ -45,7 +45,7 @@ pipeline {
 		sh '#/home/arul/MUTHOOT/CUSTOM/DOCKER_COMPOSE/stopbyname.sh catalog.api'	
 		sh '#docker run -d --env-file env.discount.api -p "8000:80"  --name discount.api  discount.api'
 		script{
-			docker tag -t discount.api 192.168.1.53:1414/discount.api  
+			docker tag discount.api 192.168.1.53:1414/discount.api  
 			docker push 192.168.1.53:1414/discount.api
 			}
 			
