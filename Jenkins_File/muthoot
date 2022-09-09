@@ -9,7 +9,7 @@ pipeline {
       steps {
 	 	dir('src'){       
 		script{ 
-			dockerImage=docker.build discount.api
+			 docker build -t discount.api . 
        		     }
                           }
                    }
@@ -23,11 +23,9 @@ pipeline {
 		sh '#docker run -d --env-file env.discount.api  -p "8002:80"  --name discount.api  discount.api'
         	echo 'Deploy completed '  
 		script{
-			docker.withRegistry('http://192.168.1.53:1414','nexus')
-			{
-				dockerImage.push()
+			docker tag -t discount.api 192.168.1.53:1414/discount.api  
+			docker push 192.168.1.53:1414/discount.api 
 			}
-		     }
         	}
       	    }
     		   }
