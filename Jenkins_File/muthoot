@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  environment {
+     dockerImage = ''
+    }
+  
   triggers {
     GenericTrigger(
      genericVariables: [
