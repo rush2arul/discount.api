@@ -31,7 +31,7 @@ pipeline {
       steps {
 	 dir('src')
         	{       
-		docker build -t discount.api .
+		sh 'docker build -t discount.api .'
         	}
 
       }
